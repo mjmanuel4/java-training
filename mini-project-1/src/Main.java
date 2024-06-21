@@ -25,7 +25,10 @@ public class Main {
                 System.out.println(calculator.multiply(a,b));
             else if(num[1].contains("/"))
                 System.out.println(calculator.divide(a,b));
-        }catch (Exception e){
+
+        } catch (ArithmeticException e) {
+            System.out.println(e.getMessage());
+        } catch (Exception e){
             System.out.println("Invalid input.");
         }
 
