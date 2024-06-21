@@ -15,7 +15,7 @@ public class Calculator {
 
     public double divide(double a, double b){
         if (b == 0)
-            throw new ArithmeticException("Invalid input: division by zero.");
+            throw new ArithmeticException("Invalid input: division by zero. Please provide a valid expression:");
         else
             return(a/b);
     }
