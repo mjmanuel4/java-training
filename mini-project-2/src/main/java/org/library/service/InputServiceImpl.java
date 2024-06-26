@@ -1,6 +1,6 @@
-package org.library.service;
+package main.java.org.library.service;
 
-import org.library.book.Book;
+import main.java.org.library.book.Book;
 
 import java.util.Scanner;
 

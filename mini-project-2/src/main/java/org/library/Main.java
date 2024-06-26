@@ -1,7 +1,7 @@
-package org.library;
+package main.java.org.library;
 
-import org.library.service.InputServiceImpl;
-import org.library.service.LibraryService;
+import main.java.org.library.service.InputServiceImpl;
+import main.java.org.library.service.LibraryService;
 
 import java.util.Objects;
 import java.util.Scanner;

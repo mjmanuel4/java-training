@@ -1,4 +1,4 @@
-package org.library.book;
+package main.java.org.library.book;
 
 public class Book {
     private String title;
