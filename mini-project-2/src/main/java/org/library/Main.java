@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        // TODO: data persistence, unit testing, readme, lombok, loggers
+        // TODO: data persistence, readme
         Scanner scanner = new Scanner(System.in);
         LibraryService libraryService = new LibraryService();
         InputServiceImpl inputService = new InputServiceImpl();
