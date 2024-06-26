@@ -32,29 +32,40 @@ public class InputServiceImpl{
         int inputInt;
 
         @Override
-        public Book getInput(){
+        public Book getInput() {
+            boolean invalidInput = true;
+            Book book = new Book(null, null, null);
+
             System.out.println("\nYou are removing a book. Please choose a method:");
             System.out.println("[1] By title");
             System.out.println("[2] By ISBN\n");
 
-            inputInt = Integer.parseInt(scanner.nextLine());
-            Book book = new Book(null, null, null);
+            while (invalidInput) {
+                try {
+                    inputInt = Integer.parseInt(scanner.nextLine());
+                    invalidInput = false;
 
-            switch (inputInt){
-                case 1:
-                    System.out.println("\nYou are removing a book by title.");
-                    System.out.print("Enter title: ");
-                    inputString = scanner.nextLine();
+                    switch (inputInt) {
+                        case 1:
+                            System.out.println("\nYou are removing a book by title.");
+                            System.out.print("Enter title: ");
+                            inputString = scanner.nextLine();
 
-                    book.setTitle(inputString);
-                    break;
-                case 2:
-                    System.out.println("\nYou are removing a book by ISBN.");
-                    System.out.print("Enter ISBN: ");
-                    inputLong = Long.parseLong(scanner.nextLine());
+                            book.setTitle(inputString);
+                            break;
+                        case 2:
+                            System.out.println("\nYou are removing a book by ISBN.");
+                            System.out.print("Enter ISBN: ");
+                            inputLong = Long.parseLong(scanner.nextLine());
 
-                    book.setIsbn(inputLong);
-                    break;
+                            book.setIsbn(inputLong);
+                            break;
+                    }
+
+
+                } catch (Exception e) {
+                    System.out.println("\nInvalid inout, please enter a valid option.");
+                }
             }
 
             return book;
@@ -68,36 +79,45 @@ public class InputServiceImpl{
 
         @Override
         public Book getInput() {
+            boolean invalidInput = true;
+            Book book = new Book(null, null, null);
+
             System.out.println("\nYou are retrieving a book/s. Please choose a method:");
             System.out.println("[1] By title");
             System.out.println("[2] By author");
             System.out.println("[3] By ISBN\n");
 
-            inputInt = Integer.parseInt(scanner.nextLine());
-            Book book = new Book(null, null, null);
+            while (invalidInput) {
+                try {
+                    inputInt = Integer.parseInt(scanner.nextLine());
+                    invalidInput = false;
 
-            switch (inputInt){
-                case 1:
-                    System.out.println("\nYou are removing a book by title.");
-                    System.out.print("Enter title: ");
-                    inputString = scanner.nextLine();
+                    switch (inputInt) {
+                        case 1:
+                            System.out.println("\nYou are removing a book by title.");
+                            System.out.print("Enter title: ");
+                            inputString = scanner.nextLine();
 
-                    book.setTitle(inputString);
-                    break;
-                case 2:
-                    System.out.println("\nYou are removing a book by author.");
-                    System.out.print("Enter author: ");
-                    inputString = scanner.nextLine();
+                            book.setTitle(inputString);
+                            break;
+                        case 2:
+                            System.out.println("\nYou are removing a book by author.");
+                            System.out.print("Enter author: ");
+                            inputString = scanner.nextLine();
 
-                    book.setAuthor(inputString);
-                    break;
-                case 3:
-                    System.out.println("\nYou are removing a book by ISBN.");
-                    System.out.print("Enter ISBN: ");
-                    inputLong = Long.parseLong(scanner.nextLine());
+                            book.setAuthor(inputString);
+                            break;
+                        case 3:
+                            System.out.println("\nYou are removing a book by ISBN.");
+                            System.out.print("Enter ISBN: ");
+                            inputLong = Long.parseLong(scanner.nextLine());
 
-                    book.setIsbn(inputLong);
-                    break;
+                            book.setIsbn(inputLong);
+                            break;
+                    }
+                } catch (Exception e) {
+                    System.out.println("\nInvalid inout, please enter a valid option.");
+                }
             }
 
             return book;
