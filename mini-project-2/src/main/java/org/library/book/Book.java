@@ -1,5 +1,10 @@
-package main.java.org.library.book;
+package org.library.book;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class Book {
     private String title;
     private String author;
@@ -8,30 +13,6 @@ public class Book {
     public Book(String title, String author, Long isbn) {
         this.title = title;
         this.author = author;
-        this.isbn = isbn;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
-    }
-
-    public Long getIsbn() {
-        return isbn;
-    }
-
-    public void setIsbn(Long isbn) {
         this.isbn = isbn;
     }
 

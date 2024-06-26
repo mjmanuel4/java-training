@@ -1,6 +1,6 @@
-package main.java.org.library.service;
+package org.library.service;
 
-import main.java.org.library.book.Book;
+import org.library.book.Book;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,35 +41,37 @@ public class LibraryService {
         }
     }
 
-    public void retrieveBook(Book forRetrieval) {
-        Book toRetrieve = null;
-        List<Book> toRetrieveList = new ArrayList<Book>();
+    public Book retrieveBook(Book forRetrieval) {
+        Book retrieved = null;
+        List<Book> retrievedList = new ArrayList<Book>();
 
         for (Book book : bookList){
             if (Objects.nonNull(forRetrieval.getTitle())) {
                 if (book.getTitle().equals(forRetrieval.getTitle())){
-                    toRetrieve = book;
+                    retrieved = book;
                     break;
                 }
             } else if (Objects.nonNull(forRetrieval.getAuthor())) {
                 if (book.getAuthor().equals(forRetrieval.getAuthor())) {
-                    toRetrieveList.add(book);
+                    retrievedList.add(book);
                 }
             } else if(Objects.nonNull(forRetrieval.getIsbn())) {
                 if (book.getIsbn().equals(forRetrieval.getIsbn())){
-                    toRetrieve = book;
+                    retrieved = book;
                     break;
                 }
             }
         }
 
-        if (Objects.isNull(toRetrieve) && toRetrieveList.isEmpty()) {
+        if (Objects.isNull(retrieved) && retrievedList.isEmpty()) {
             throw new NullPointerException("Sorry, the book/s you're trying to retrieve is not here.");
-        } else if (Objects.nonNull(toRetrieve)){
-            displayBook(toRetrieve);
+        } else if (Objects.nonNull(retrieved)){
+            displayBook(retrieved);
         } else {
-            displayBook(toRetrieveList);
+            displayBook(retrievedList);
         }
+        
+        return retrieved;
     }
 
     public void displayBook() {
@@ -100,5 +102,9 @@ public class LibraryService {
         } catch (NullPointerException e) {
             System.out.println("There are no books to display.");
         }
+    }
+
+    public int getSize(){
+        return bookList.size();
     }
 }

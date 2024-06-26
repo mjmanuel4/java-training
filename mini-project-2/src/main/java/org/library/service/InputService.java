@@ -1,6 +1,6 @@
-package main.java.org.library.service;
+package org.library.service;
 
-import main.java.org.library.book.Book;
+import org.library.book.Book;
 
 public interface InputService {
     public Book getInput();
