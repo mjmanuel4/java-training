@@ -1,10 +1,9 @@
-package test.service;
+package org.library.service;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
 import org.library.book.Book;
-import org.library.service.LibraryService;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 
