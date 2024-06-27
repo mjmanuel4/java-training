@@ -17,39 +17,39 @@ class BookTest {
     }
 
     @Test
-    void getTitle() {
+    public void getTitle() {
         logger.info("Testing method getTitle()");
         Assertions.assertEquals("Title", book.getTitle());
     }
 
     @Test
-    void getAuthor() {
+    public void getAuthor() {
         logger.info("Testing method getAuthor()");
         Assertions.assertEquals("Author", book.getAuthor());
     }
 
     @Test
-    void getIsbn() {
+    public void getIsbn() {
         logger.info("Testing method getIsbn");
         Assertions.assertEquals(Long.parseLong("12345"), book.getIsbn());
     }
 
     @Test
-    void setTitle() {
+    public void setTitle() {
         logger.info("Testing method setTitle()");
         book.setTitle("New Title");
         Assertions.assertEquals("New Title", book.getTitle());
     }
 
     @Test
-    void setAuthor() {
+    public void setAuthor() {
         logger.info("Testing method setAuthor()");
         book.setAuthor("New Author");
         Assertions.assertEquals("New Author", book.getAuthor());
     }
 
     @Test
-    void setIsbn() {
+    public void setIsbn() {
         logger.info("Testing method setIsbn()");
         book.setIsbn(Long.parseLong("67890"));
         Assertions.assertEquals(Long.parseLong("67890"), book.getIsbn());
