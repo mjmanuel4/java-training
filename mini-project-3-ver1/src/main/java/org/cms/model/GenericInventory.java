@@ -13,8 +13,9 @@ public class GenericInventory<T> {
     protected List<T> items;
     protected String pathName;
 
-    public GenericInventory() {
+    public GenericInventory(String pathName) {
         this.items = new ArrayList<T>();
+        this.pathName = pathName;
     }
 
     public void addItem(T item){

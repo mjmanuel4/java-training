@@ -10,8 +10,7 @@ import java.util.Objects;
 public class Inventory extends GenericInventory<Product>{
 
     public Inventory() {
-        super();
-        this.pathName = "mini-project-3-mvc/src/main/inventory.txt";
+        super(".\\mini-project-3\\src\\main\\resources\\inventory.txt");
     }
 
     public void display(){

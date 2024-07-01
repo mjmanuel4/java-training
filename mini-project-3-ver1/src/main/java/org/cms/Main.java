@@ -5,10 +5,7 @@ import org.cms.model.CartItem;
 import org.cms.model.Inventory;
 import org.cms.model.Product;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
     private static Inventory inventory;
@@ -25,7 +22,7 @@ public class Main {
         if (inventory.getItems().isEmpty()){
             System.out.println("The inventory is empty. Please initialize the product list.");
             List<Product> products = new ArrayList<Product>();
-            inventory.setItems(initializeInventory(products));
+            inventory.setItems(initializeInventory(products, scanner));
 
             // update inventory
             inventory.genericUpdate();
@@ -41,23 +38,30 @@ public class Main {
         boolean cartSysActive = true;
 
         while (cartSysActive) {
-            switch (cartServiceInput()) {
-                case 1:
-                    cart.setItems(cartAdditionService());
-                    cart.genericUpdate();
-                    break;
-                case 2:
-                    break;
-                case 3:
-
+            try {
+                switch (cartServiceInput(scanner)) {
+                    case 1:
+                        cart.setItems(cartAdditionService());
+                        cart.genericUpdate();
+                        break;
+                    case 2, 5:
+                        cartSysActive = false;
+                        break;
+                    case 3:
+                        cart.display();
+                        break;
+                    case 4:
+                        inventory.display();
+                }
+            } catch (NoSuchElementException e) {
+                System.out.println("An error occurred. Please try again.");
             }
         }
 
         scanner.close();
     }
 
-    public static List<Product> initializeInventory(List<Product> products) {
-        Scanner scanner = new Scanner(System.in);
+    public static List<Product> initializeInventory(List<Product> products, Scanner scanner) {
         boolean initializeInventory = true;
 
         while (initializeInventory) {
@@ -77,21 +81,18 @@ public class Main {
             }
         }
 
-        scanner.close();
         return products;
     }
 
-    public static int cartServiceInput() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Please choose a cart service:");
+    public static int cartServiceInput(Scanner scanner) {
+        System.out.println("\nPlease choose a cart service:");
         System.out.println("[1] Add to Cart");
         System.out.println("[2] Remove from Cart");
         System.out.println("[3] View Cart");
         System.out.println("[4] View Inventory");
-        System.out.println("[4] Exit");
-        int result = Integer.parseInt(scanner.nextLine());
-        scanner.close();
-        return result;
+        System.out.println("[5] Exit");
+
+        return Integer.parseInt(scanner.nextLine());
     }
 
     public static List<CartItem> cartAdditionService(){
@@ -101,7 +102,6 @@ public class Main {
         System.out.println("Displaying inventory for reference:");
         inventory.display();
 
-
         while (updatingCart) {
             System.out.print("\nEnter product no. to add to cart: ");
             int index = Integer.parseInt(scanner.nextLine());
@@ -110,8 +110,8 @@ public class Main {
                                 .stream()
                                 .anyMatch(c -> Objects.equals(product.getProductName(),c.getProductName()));
             if (inCart) {
-                int cartIndex = cart.getItems().indexOf(); // TODO: get existing cart item
-                cart.getItems().get(cartIndex).setCount(cart.getItems().get(cartIndex).getCount() + 1);
+                //int cartIndex = cart.getItems().indexOf(); // TODO: get existing cart item
+                cart.getItems().get(index).setCount(cart.getItems().get(index).getCount() + 1);
             } else
                 cart.addItem(new CartItem(product.getProductName(),1, product.getPrice()));
 

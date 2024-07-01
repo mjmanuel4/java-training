@@ -9,8 +9,7 @@ public class Cart extends GenericInventory<CartItem> {
     private double totalPrice;
 
     public Cart() {
-        super();
-        this.pathName = "mini-project-3-mvc/src/main/cart.txt";
+        super(".\\mini-project-3\\src\\main\\resources\\cart.txt");
     }
 
     public void display(){
