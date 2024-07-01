@@ -1,5 +1,4 @@
 ## Basic Cart Management System
-***
 This project is a simple e-commerce cart system that allows the users to add items
 to the cart, view the cart, and calculate the total price. The model layer contains
 the classes `Product` and `Cart`, while the methods are in the service layer.
