@@ -4,7 +4,6 @@ to the cart, view the cart, and calculate the total price. The model layer conta
 the classes `Product` and `Cart`, while the methods are in the service layer.
 
 ### How to run
-***
 To run the project, run the following code in the terminal while in the 
 `java-training/mini-project-3-final` directory:
 ```
